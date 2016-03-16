@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -7,7 +7,6 @@ if [[ "$1" == -* ]]; then
 	set -- /kibana/bin/kibana "$@"
 fi
 
-# Run as user "kibana" if the command is "kibana"
 if [ "$1" = '/kibana/bin/kibana' ]; then
 	if [ "$ELASTICSEARCH_URL" -o "$ELASTICSEARCH_PORT_9200_TCP" ]; then
 		: ${ELASTICSEARCH_URL:='http://elasticsearch:9200'}
@@ -18,8 +17,6 @@ if [ "$1" = '/kibana/bin/kibana' ]; then
 		echo >&2 '  or -e ELASTICSEARCH_URL=http://some-elasticsearch:9200 ?'
 		echo >&2
 	fi
-
-	set -- gosu kibana tini -- "$@"
 fi
 
 exec "$@"
