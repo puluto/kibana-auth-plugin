@@ -12,7 +12,7 @@ LOCAL_AUTH_LOGINS=admin:password bin/kibana
 
 Docker container
 ```
-docker run --detach --name kibana -e LOCAL_AUTH_LOGINS=admin:password --net=host index.alauda.cn/puluto/kibana
+docker run --detach --name kibana -e LOCAL_AUTH_LOGINS=admin:password -e ELASTICSEARCH_URL=http://es.test.es:9200/ --net=host index.alauda.cn/puluto/kibana
 ```
 
 License: MIT.
