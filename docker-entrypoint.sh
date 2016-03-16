@@ -4,7 +4,7 @@ set -e
 
 # Add kibana as command if needed
 if [[ "$1" == -* ]]; then
-	set -- kibana "$@"
+	set -- /kibana/bin/kibana "$@"
 fi
 
 # Run as user "kibana" if the command is "kibana"
