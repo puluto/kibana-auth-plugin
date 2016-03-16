@@ -1,7 +1,7 @@
 FROM mhart/alpine-node
 MAINTAINER puluto@gmail.com
 
-ENV KIBANA_VERSION 4.3.1
+ENV KIBANA_VERSION 4.3.3
 
 RUN apk add --update curl && \
   ( curl -Lskj https://download.elastic.co/kibana/kibana/kibana-${KIBANA_VERSION}-linux-x64.tar.gz | \
@@ -15,7 +15,10 @@ RUN apk add --update curl && \
   apk del curl && \
   rm -rfv /var/cache/apk/* /tmp/* /var/tmp/* /root/.npm
 
-ENV LOCAL_AUTH_LOGINS=admin:password
-EXPOSE 5601
+ENV PATH /kibana/bin:$PATH
 
-CMD ["/kibana/bin/kibana"]
+COPY ./docker-entrypoint.sh /
+
+EXPOSE 5601
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["kibana"]
