@@ -2,30 +2,17 @@ Authentication module for Kibana 4
 ==================================
 
 Simplistic authentication for Kibana 4.
-Please use Elastics's Shield for a supported product.
-
-Or wait for progress to land in Kibana: https://github.com/elastic/kibana/issues/3904
 
 Usage:
 ```
-bin/kibana plugin --install kibana-auth-plugin -u https://github.com/hmalphettes/kibana-auth-plugin/archive/master.tar.gz
-npm i hapi-auth-cookie
-LOCAL_AUTH_LOGINS=admin:password,foo:bar bin/kibana
+bin/kibana plugin --install kibana-auth-plugin -u https://github.com/puluto/kibana-auth-plugin/archive/master.tar.gz
+npm i hapi-auth-cookie@3.1.0
+LOCAL_AUTH_LOGINS=admin:password bin/kibana
 ```
 
 Docker container
 ```
-docker run --detach --name kibana -e LOCAL_AUTH_LOGINS=admin:password --net=host hmalphettes/kibana-auth
+docker run --detach --name kibana -e LOCAL_AUTH_LOGINS=admin:password --net=host index.alauda.cn/puluto/kibana
 ```
-
-Help wanted:
-
-- cleaner install
-- google oauth and others.
-
-Weaker than hoped for - more help wanted:
-
-- form submitted via a GET ( a POST fails due to xrcf defenses in kibana )
-- installation of the hapi-auth-cookie does not happen when the plugin is installed
 
 License: MIT.
