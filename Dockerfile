@@ -18,6 +18,7 @@ RUN apk add --update curl && \
 ENV PATH /kibana/bin:$PATH
 
 COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
 EXPOSE 5601
 ENTRYPOINT ["/docker-entrypoint.sh"]
