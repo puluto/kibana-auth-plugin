@@ -8,7 +8,7 @@ if [[ "$1" == -* ]]; then
 fi
 
 # Run as user "kibana" if the command is "kibana"
-if [ "$1" = 'kibana' ]; then
+if [ "$1" = '/kibana/bin/kibana' ]; then
 	if [ "$ELASTICSEARCH_URL" -o "$ELASTICSEARCH_PORT_9200_TCP" ]; then
 		: ${ELASTICSEARCH_URL:='http://elasticsearch:9200'}
 		sed -ri "s!^(\#\s*)?(elasticsearch\.url:).*!\2 '$ELASTICSEARCH_URL'!" /kibana/config/kibana.yml
