@@ -11,6 +11,7 @@ RUN apk add --update curl && \
   rm /kibana/bin/*.bat && \
   cd /kibana && \
   npm i hapi-auth-cookie@3.1.0 && \
+  bin/kibana plugin --install elastic/sense && \
   bin/kibana plugin --install kibana-auth-plugin -u https://github.com/puluto/kibana-auth-plugin/archive/master.tar.gz && \
   apk del curl && \
   rm -rfv /var/cache/apk/* /tmp/* /var/tmp/* /root/.npm
